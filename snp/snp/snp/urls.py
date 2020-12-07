@@ -1,0 +1,5 @@
+"""
+snp URL Configuration
+"""
+
+urlpatterns = []
