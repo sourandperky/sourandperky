@@ -9,5 +9,7 @@ __pycache__
 .idea
 
 # Frameworks & Libraries
+.venv
+
 # Project Specific
 # ETC
