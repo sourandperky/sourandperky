@@ -3,3 +3,4 @@ pre-commit==2.9.2
 iubeo==0.2.0
 django-simple-history==2.12.0
 psycopg2==2.8.6
+django-lifecycle==0.8.0
