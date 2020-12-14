@@ -15,6 +15,9 @@ ALLOWED_HOSTS = CONFIG.ALLOWED_HOSTS
 
 # Application definition
 INSTALLED_APPS = [
+    "django_extensions",
+    "django_lifecycle",
+    # ...
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
