@@ -15,9 +15,10 @@ ALLOWED_HOSTS = CONFIG.ALLOWED_HOSTS
 
 # Application definition
 INSTALLED_APPS = [
+    # third-party
     "django_extensions",
-    "django_lifecycle",
-    # ...
+    "django_hosts",
+    # built-in
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -32,15 +33,20 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    # 'django_hosts.middleware.HostsRequestMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    # 'django_hosts.middleware.HostsResponseMiddleware',
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "snp.urls"
+ROOT_URLCONF = "snp.urls.root"
+ROOT_HOSTCONF = "snp.hosts"
+DEFAULT_HOST = "root"
+
 
 TEMPLATES = [
     {

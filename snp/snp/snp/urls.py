@@ -1,5 +1,0 @@
-"""
-snp URL Configuration
-"""
-
-urlpatterns = []
