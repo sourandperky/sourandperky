@@ -1,5 +1,5 @@
 from django.test import TestCase
 
 
-class UserTestCase(TestCase):
+class TitleTestCase(TestCase):
     ...
