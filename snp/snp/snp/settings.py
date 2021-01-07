@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     # third-party
     "django_extensions",
     "django_hosts",
+    "admin_auto_filters",
     # built-in
     "django.contrib.admin",
     "django.contrib.auth",
@@ -33,13 +34,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    # 'django_hosts.middleware.HostsRequestMiddleware',
+    "django_hosts.middleware.HostsRequestMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
-    # 'django_hosts.middleware.HostsResponseMiddleware',
+    "django_hosts.middleware.HostsResponseMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
