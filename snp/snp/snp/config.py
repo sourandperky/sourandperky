@@ -14,5 +14,5 @@ CONFIG = config(
         "HOST": str,
         "ALLOWED_HOSTS": comma_separated_list,
     },
-    prefix='SNP',
+    prefix="SNP",
 )
