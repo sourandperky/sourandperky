@@ -13,5 +13,6 @@ CONFIG = config(
         "SECRET_KEY": str,
         "HOST": str,
         "ALLOWED_HOSTS": comma_separated_list,
-    }
+    },
+    prefix='SNP',
 )
