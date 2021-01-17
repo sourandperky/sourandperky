@@ -6,6 +6,7 @@ from .base import Base
 
 class Title(Base):
     name = models.CharField(max_length=100)
+    topic = models.ForeignKey("core.Topic", on_delete=models.CASCADE, related_name="titles")
 
     class Meta:
         verbose_name = _("Title")

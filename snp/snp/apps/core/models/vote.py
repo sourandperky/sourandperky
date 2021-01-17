@@ -13,8 +13,8 @@ class Vote(Base):
         UP = "upvote", _("upvote")
         DOWN = "downvote", _("downvote")
 
-    by = models.ForeignKey("User", on_delete=models.CASCADE)
-    to = models.ForeignKey("Entry", on_delete=models.CASCADE)
+    by = models.ForeignKey("core.User", on_delete=models.CASCADE)
+    to = models.ForeignKey("core.Entry", on_delete=models.CASCADE)
     type = models.CharField(choices=TYPES.choices, max_length=10)
 
     class Meta:

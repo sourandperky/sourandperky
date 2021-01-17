@@ -9,8 +9,8 @@ class Subscription(Base):
     M2M between User and Title for subscription.
     """
 
-    by = models.ForeignKey("User", on_delete=models.CASCADE)
-    to = models.ForeignKey("Title", on_delete=models.CASCADE)
+    by = models.ForeignKey("core.User", on_delete=models.CASCADE)
+    to = models.ForeignKey("core.Title", on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("Subscription")
