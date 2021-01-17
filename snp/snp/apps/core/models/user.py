@@ -6,6 +6,8 @@ from .vote import Vote
 
 
 class User(AbstractUser, Base):
+    REPR_FIELD = "username"
+
     def down_vote(self, entry):
         return Vote.objects.create(entry=entry, user=self, type=Vote.TYPES.DOWN)
 

@@ -5,6 +5,8 @@ from .base import Base
 
 
 class Topic(Base):
+    REPR_FIELD = "name"
+
     name = models.CharField(max_length=50)
 
     class Meta:

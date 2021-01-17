@@ -8,6 +8,8 @@ from simple_history.models import HistoricalRecords
 
 
 class Base(LifecycleModel):
+    REPR_FIELD = "id"
+
     id = models.UUIDField(primary_key=True, db_index=True, editable=False, default=uuid4, verbose_name=_("ID"))
     slug = models.SlugField(db_index=True, null=True, blank=True, verbose_name=_("Slug"))
     created_at = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_("Created At"))
@@ -32,6 +34,11 @@ class Base(LifecycleModel):
     @staticmethod
     def _slug2uuid(slug):
         return UUID(bytes=urlsafe_b64decode(slug + "=="))
+
+    def _default_repr(self):
+        return str(getattr(self, self.REPR_FIELD))
+
+    __repr__ = __str__ = _default_repr
 
     class Meta:
         abstract = True
