@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "django_hosts",
     "admin_auto_filters",
+    "graphene_django",
     # built-in
     "django.contrib.admin",
     "django.contrib.auth",
@@ -103,3 +104,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
+
+
+# Graphene
+GRAPHENE = {
+    "SCHEMA": "apps.api.schema.schema",
+    "ATOMIC_MUTATIONS": True,
+}
