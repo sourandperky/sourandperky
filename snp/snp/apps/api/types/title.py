@@ -8,5 +8,6 @@ class Title(Base):
         model = TitleModel
         fields = [
             "name",
-            "content",
+            "topic",
+            "entries",
         ]

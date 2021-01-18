@@ -6,4 +6,7 @@ from .base import Base
 class Topic(Base):
     class Meta:
         model = TopicModel
-        fields = ["name"]
+        fields = [
+            "name",
+            "titles",
+        ]

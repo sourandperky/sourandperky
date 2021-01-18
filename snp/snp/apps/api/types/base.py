@@ -8,31 +8,32 @@ class Base(DjangoObjectType):
     class Meta:
         abstract = True
 
+    @classmethod
+    def _read_from_base_meta(cls, attribute):
+        # Add the Base fields
+        if hasattr(cls.Meta, attribute):
+            setattr(cls.Meta, attribute, getattr(cls.Meta, attribute) + getattr(cls._Meta, attribute))
+        else:
+            setattr(cls.Meta, attribute, getattr(cls._Meta, attribute))
+
     def __init_subclass__(cls, **kwargs):
         # Create the description of the ObjectType automatically
         cls.__doc__ = Base.__doc__.format(cls.__name__)
 
-        # Add the Base fields
-        if hasattr(cls.Meta, "fields"):
-            cls.Meta.fields[:0] = cls._Meta.fields
-        else:
-            cls.Meta.fields = cls._Meta.fields
-
-        # Make every ObjectType a Relay Node
-        if hasattr(cls.Meta, "interfaces"):
-            cls.Meta.interfaces[:0] = cls._Meta.interfaces
-        else:
-            cls.Meta.interfaces = cls._Meta.interfaces
+        # Extend the subclass
+        cls._read_from_base_meta("fields")
+        cls._read_from_base_meta("filter_fields")
+        cls._read_from_base_meta("interfaces")
 
         return super().__init_subclass__(**kwargs)
 
     class _Meta:
         fields = [
-            "id",
             "slug",
             "created_at",
             "updated_at",
         ]
+        filter_fields = {"slug": ["exact"], "created_at": ["exact"], "updated_at": ["exact"]}
         interfaces = [
             graphene.relay.Node,
         ]
