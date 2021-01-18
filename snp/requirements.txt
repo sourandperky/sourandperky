@@ -10,3 +10,4 @@ django-admin-autocomplete-filter==0.6.1
 django-admin-easy==0.6
 python-dotenv==0.15.0
 graphene-django==2.15.0
+django-filter==2.4.0

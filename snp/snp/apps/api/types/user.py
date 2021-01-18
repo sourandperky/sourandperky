@@ -13,4 +13,5 @@ class User(Base):
             "email",
             "email",
             "date_joined",
+            "entries",
         ]

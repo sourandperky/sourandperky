@@ -1,4 +1,5 @@
 import graphene
+from graphene_django.filter import DjangoFilterConnectionField
 
 from .mutations import Login, Logout
 from .types import Entry, Title, Topic, User
@@ -7,10 +8,10 @@ from .types import Entry, Title, Topic, User
 class Query(graphene.ObjectType):
     """Queries specific to snp app."""
 
-    user = graphene.relay.Node.Field(User)
-    entry = graphene.relay.Node.Field(Entry)
-    title = graphene.relay.Node.Field(Title)
-    topic = graphene.relay.Node.Field(Topic)
+    users = DjangoFilterConnectionField(User)
+    entries = DjangoFilterConnectionField(Entry)
+    titles = DjangoFilterConnectionField(Title)
+    topics = DjangoFilterConnectionField(Topic)
 
 
 class Mutation(graphene.ObjectType):

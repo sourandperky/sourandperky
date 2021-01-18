@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     "django_hosts",
     "admin_auto_filters",
     "graphene_django",
+    "django_filters",
     # built-in
     "django.contrib.admin",
     "django.contrib.auth",
