@@ -15,3 +15,8 @@ class User(Base):
             "date_joined",
             "entries",
         ]
+        filter_fields = {
+            "username": ["contains"],
+            "first_name": ["contains"],
+            "last_name": ["contains"],
+        }

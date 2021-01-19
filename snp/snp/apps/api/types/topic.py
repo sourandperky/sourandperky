@@ -10,3 +10,6 @@ class Topic(Base):
             "name",
             "titles",
         ]
+        filter_fields = {
+            "name": ["contains"],
+        }
