@@ -11,3 +11,4 @@ class Entry(Base):
             "title",
             "content",
         ]
+        filter_fields = {"content": ["contains"], "title": ["exact"]}

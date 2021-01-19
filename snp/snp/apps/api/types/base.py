@@ -8,11 +8,22 @@ class Base(DjangoObjectType):
     class Meta:
         abstract = True
 
+    @staticmethod
+    def _combine_meta(a, b):
+        # No need to check the types with each other, this is an internal function anyway
+        if isinstance(a, list):
+            combined = a + b
+        elif isinstance(a, dict):
+            combined = {**a, **b}
+        else:
+            raise Exception
+        return combined
+
     @classmethod
     def _read_from_base_meta(cls, attribute):
         # Add the Base fields
         if hasattr(cls.Meta, attribute):
-            setattr(cls.Meta, attribute, getattr(cls.Meta, attribute) + getattr(cls._Meta, attribute))
+            setattr(cls.Meta, attribute, cls._combine_meta(getattr(cls.Meta, attribute), getattr(cls._Meta, attribute)))
         else:
             setattr(cls.Meta, attribute, getattr(cls._Meta, attribute))
 
@@ -33,7 +44,7 @@ class Base(DjangoObjectType):
             "created_at",
             "updated_at",
         ]
-        filter_fields = {"slug": ["exact"], "created_at": ["exact"], "updated_at": ["exact"]}
+        filter_fields = {"slug": ["exact"], "created_at": ["exact", "lt", "gt"], "updated_at": ["exact", "lt", "gt"]}
         interfaces = [
             graphene.relay.Node,
         ]

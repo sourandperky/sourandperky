@@ -11,3 +11,4 @@ class Title(Base):
             "topic",
             "entries",
         ]
+        filter_fields = {"name": ["contains"], "topic": ["exact"]}
