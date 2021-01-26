@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "admin_auto_filters",
     "graphene_django",
     "django_filters",
+    "graphql_auth",
     # built-in
     "django.contrib.admin",
     "django.contrib.auth",
@@ -85,7 +86,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+# Authentication
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", "OPTIONS": {"min_length": 10}},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -95,6 +96,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "core.User"
 
+GRAPHQL_AUTH = {
+    "LOGIN_ALLOWED_FIELDS": ["email", "username"],
+}
 
 # Internationalization
 LANGUAGE_CODE = "en-us"
