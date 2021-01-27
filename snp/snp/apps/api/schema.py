@@ -1,6 +1,6 @@
 import graphene
 from graphene_django.filter import DjangoFilterConnectionField
-from graphql_auth import relay
+from graphql_auth import mutations, relay
 
 from .types import Entry, Title, Topic, User
 
@@ -21,6 +21,7 @@ class Query(graphene.ObjectType):
 class Mutation(graphene.ObjectType):
     """Mutations specific to snp app."""
 
+    # User Account Management
     register = relay.Register.Field()
     verify_account = relay.VerifyAccount.Field()
     resend_activation_email = relay.ResendActivationEmail.Field()
@@ -31,6 +32,12 @@ class Mutation(graphene.ObjectType):
     update_account = relay.UpdateAccount.Field()
     archive_account = relay.ArchiveAccount.Field()
     delete_account = relay.DeleteAccount.Field()
+
+    # Login
+    token_auth = mutations.ObtainJSONWebToken.Field()
+    verify_token = mutations.VerifyToken.Field()
+    refresh_token = mutations.RefreshToken.Field()
+    revoke_token = mutations.RevokeToken.Field()
 
 
 schema = graphene.Schema(query=Query, mutation=Mutation)  # NOQA  # No idea why does query screams like that.
