@@ -5,11 +5,18 @@
 __pycache__
 *.pyc
 
+# Node
+node_modules
+
 # IDEs & Editors
 .idea
 
 # Frameworks & Libraries
 .venv
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+build
 
 # Project Specific
 # ETC

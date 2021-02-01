@@ -9,16 +9,26 @@ repos:
     rev: stable
     hooks:
       - id: black
+        files: 'snp/backend/'
         args: [--line-length=120]
 
   - repo: https://github.com/pycqa/isort
     rev: 5.5.3
     hooks:
       - id: isort
+        files: 'snp/backend/'
         args: [--profile=black, -m=3, -l=120]
 
   - repo: https://github.com/hakancelik96/unimport
     rev: stable
     hooks:
       - id: unimport
+        files: 'snp/backend/'
         args: [--remove, --include-star-import]
+
+  - repo: local
+    hooks:
+      - id: precommit
+        name: precommit
+        entry: scripts/precommit/precommit.sh
+        language: script
